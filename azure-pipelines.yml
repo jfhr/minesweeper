@@ -22,8 +22,8 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-      npm install -g @angular/cli
-      ng build --prod
+        npm install -g @angular/cli
+        ng build --prod
     displayName: 'Build for production'
   - task: CopyFilesOverSSH@0
     inputs:
