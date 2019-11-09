@@ -9,7 +9,7 @@ import {GameState, MinesweeperOptions} from '../minesweeper-service/minesweeper.
 export class GameOptionsComponent {
   @Input() public options: MinesweeperOptions;
   @Input() public gameState: GameState;
-  @Output() public submit = new EventEmitter();
+  @Output() public submitGame = new EventEmitter();
 
   public isGameWon = false;
   public isGameLost = false;
@@ -35,7 +35,7 @@ export class GameOptionsComponent {
   }
 
   public submitOptions() {
-    this.submit.emit(this.options);
+    this.submitGame.emit(this.options);
     return false;
   }
 }

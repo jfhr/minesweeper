@@ -24,7 +24,7 @@ export class GameUiComponent {
     }
     modalRef.componentInstance.options = this.options;
     modalRef.componentInstance.initialize();
-    modalRef.componentInstance.submit.subscribe(options => {
+    modalRef.componentInstance.submitGame.subscribe(options => {
       this.submitGame();
     });
   }
