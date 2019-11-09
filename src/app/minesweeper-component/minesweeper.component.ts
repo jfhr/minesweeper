@@ -4,7 +4,7 @@ import {Cell, GameState, Minesweeper, MinesweeperOptions} from '../minesweeper-s
 @Component({
   selector: 'app-minesweeper',
   templateUrl: './minesweeper.component.html',
-  styleUrls: ['/minesweeper.component.css'],
+  styleUrls: ['./minesweeper.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinesweeperComponent {
