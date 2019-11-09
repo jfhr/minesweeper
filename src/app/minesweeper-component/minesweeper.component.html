@@ -1,0 +1,18 @@
+<table class="center-table">
+  <tbody>
+  <tr *ngFor="let row of game.cells.iterate2d()">
+    <td *ngFor="let here of row">
+      <div
+        (click)="clickCell(here.x, here.y, here.content)"
+        (contextmenu)="rightClickCell(here.x, here.y, here.content)"
+        [classList]="here.content.classList"
+        style="padding: 0"
+      >
+          <span class="cell">
+            {{ here.content.value }}
+          </span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

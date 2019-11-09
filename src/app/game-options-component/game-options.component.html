@@ -1,0 +1,63 @@
+<div class="modal-content justify-content-center text-center">
+
+  <div *ngIf="isNewGame">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h4>New Game</h4>
+      </div>
+    </div>
+    <div class="modal-body">
+      <form (submit)="submitOptions()">
+        <div class="form-group">
+          <label>
+            Field height:
+            <input
+              class="form-control"
+              type="number"
+              name="field-height"
+              [(ngModel)]="options.sizeX"
+            >
+          </label>
+          <br>
+          <label>
+            Field width:
+            <input
+              class="form-control"
+              type="number"
+              name="field-width"
+              [(ngModel)]="options.sizeY"
+            >
+          </label>
+          <br>
+          <label>
+            Number of bombs:
+            <input
+              class="form-control"
+              type="number"
+              name="number-of-bombs"
+              [(ngModel)]="options.numberOfBombs"
+              [max]="options.sizeX * options.sizeY"
+            >
+          </label>
+          <br>
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="GO"
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="isGameLost || isGameWon">
+    <div class="modal-header justify-content-center text-center">
+      <div class="title" *ngIf="isGameWon">You won!</div>
+      <div class="title" *ngIf="isGameLost">You lost.</div>
+    </div>
+    <div class="modal-footer justify-content-center text-center">
+      <div class="btn btn-primary" (click)="newGame()">New game</div>
+    </div>
+  </div>
+
+</div>
