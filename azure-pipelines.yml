@@ -21,14 +21,6 @@ steps:
     displayName: 'Install dependencies'
   - task: CmdLine@2
     inputs:
-      script: |
-        npm install -g @angular/cli
-        ng lint
-      # ng test --watch=false
-      # ng e2e --watch=false
-    displayName: 'Run lint & tests'
-  - task: CmdLine@2
-    inputs:
       script: 'ng build --prod'
     displayName: 'Build for production'
   - task: CopyFilesOverSSH@0
