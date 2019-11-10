@@ -1,16 +1,20 @@
 import {AppPage} from './app.po';
 import {browser, logging} from 'protractor';
 
-describe('workspace-project App', () => {
+describe('Minesweeper App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display title', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('minesweeper app is running!');
+    expect(page.getTitleText()).toEqual('Minesweeper');
+  });
+
+  it('should show configarion options', () => {
+
   });
 
   afterEach(async () => {

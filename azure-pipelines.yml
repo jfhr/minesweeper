@@ -23,6 +23,7 @@ steps:
     inputs:
       script: |
         npm install -g @angular/cli
+        ng test --watch=false --browsers=ChromeHeadless
         ng build --prod
     displayName: 'Build for production'
   - task: CopyFilesOverSSH@0
