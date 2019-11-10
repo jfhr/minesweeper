@@ -1,12 +1,32 @@
 <div class="modal-content justify-content-center text-center">
 
   <div *ngIf="isNewGame">
-    <div class="modal-header">
+
+    <div class="modal-header justify-content-center">
       <div class="modal-title">
         <h4>New Game</h4>
       </div>
     </div>
-    <div class="modal-body">
+
+    <div *ngIf="!isNewCustomGame" class="btn-group-vertical my-3" role="group">
+      <button
+        *ngFor="let gameMode of defaultGameModes"
+        (click)="selectGameMode(gameMode)"
+        class="btn btn-primary p-3"
+      >
+        {{gameMode.key}}
+<!--        <span class="p-2">{{gameMode.key}}</span>-->
+<!--        <span class="p-2">-->
+<!--          {{gameMode.options.sizeY}}x{{gameMode.options.sizeX}}; {{gameMode.options.numberOfBombs}} bombs-->
+<!--        </span>-->
+      </button>
+      <button class="btn btn-primary p-3" (click)="enableCustomGame()">
+<!--        <span class="p-2">Custom</span>-->
+        Custom
+      </button>
+    </div>
+
+    <div *ngIf="isNewCustomGame" class="modal-body">
       <form (submit)="submitOptions()">
         <div class="form-group">
           <label>
@@ -48,6 +68,7 @@
         </div>
       </form>
     </div>
+
   </div>
 
   <div *ngIf="isGameLost || isGameWon">
