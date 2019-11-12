@@ -27,12 +27,12 @@ steps:
     script: |
       ng test --watch=false
       ng e2e
-    failOnStderr: true
   displayName: 'Run tests'
 
 - task: CmdLine@2
   inputs:
     script: 'ng build --prod'
+  displayName: 'Build for production'
 
 - task: CopyFilesOverSSH@0
   inputs:
