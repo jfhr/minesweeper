@@ -10,32 +10,36 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-  - task: CmdLine@1
-    inputs:
-      script: |
-        npm install
-        npm install -g @angular/cli
-    displayName: 'Install dependencies'
-  - task: CmdLine@2
-    inputs:
-      script: |
-        ng test --watch=false --browser=ChromeHeadless
-  - task: CmdLine@3
-    inputs:
-      script: |
-        ng build --prod
-    displayName: 'Build for production'
-  - task: CopyFilesOverSSH@0
-    inputs:
-      sshEndpoint: 'powersrvr connection'
-      sourceFolder: 'dist/minesweeper'
-      contents: '**'
-      targetFolder: '/var/www/minesweeper'
-      cleanTargetFolder: true
-      failOnEmptySource: true
-    displayName: 'Copy to server'
+- task: CmdLine@2
+  inputs:
+    script: |
+      npm install
+      npm install -g @angular/cli
+  displayName: 'Install dependencies'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      ng test --watch=false
+      ng e2e
+  displayName: 'Run tests'
+
+- task: CmdLine@2
+  inputs:
+    script: 'ng build --prod'
+  displayName: 'Build for production'
+
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'powersrvr connection'
+    sourceFolder: 'dist/minesweeper'
+    contents: '**'
+    targetFolder: '/var/www/minesweeper'
+    cleanTargetFolder: true
+    failOnEmptySource: true
+  displayName: 'Copy to server'
