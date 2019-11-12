@@ -21,15 +21,17 @@ steps:
         npm install
         npm install -g @angular/cli
     displayName: 'Install dependencies'
+    
   - task: CmdLine@2
     inputs:
       script: |
         ng test --watch=false --browser=ChromeHeadless
+        ng e2e
   - task: CmdLine@3
     inputs:
-      script: |
-        ng build --prod
+      script: 'ng build --prod'
     displayName: 'Build for production'
+
   - task: CopyFilesOverSSH@0
     inputs:
       sshEndpoint: 'powersrvr connection'
