@@ -33,7 +33,7 @@ describe('Minesweeper App', () => {
     // options field should disappear
     expect(element(by.css('app-game-options')).isPresent()).toBeFalsy();
     // should have 30 by 20 bombs
-    expect(element.all(by.css('span.cell')).count()).toEqual(30 * 20);
+    expect(element.all(by.css('span.cell-content')).count()).toEqual(30 * 20);
   });
 
   it('should not close modal window on ESC', () => {
