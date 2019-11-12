@@ -1,8 +1,10 @@
 .cell {
   width: 48px;
   height: 48px;
-  display: block;
-  margin: 0;
+  text-align: center;
+}
+
+.cell-content {
   text-align: center;
   font-size: 1.9em;
 }
@@ -12,4 +14,10 @@
   width: 50%;
   margin: 0 auto;
   float: none;
+}
+
+.cell-table {
+  border-collapse: separate;
+  border-spacing: 1px 1px;
+  table-layout: fixed;
 }

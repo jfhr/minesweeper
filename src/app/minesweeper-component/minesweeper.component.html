@@ -1,14 +1,25 @@
-<table class="center-table">
+<!--
+We have to explicitly set the width of the table with this weird formula
+because otherwise css would make the cells larger to fit the entire table.
+Instead of, you know, shrinking the table to fit the cells.
+That would make too much sense.
+-->
+<table
+  class="center-table cell-table"
+  [style.width.px]="game.cells.sizeY * 51 + 1"
+>
   <tbody>
   <tr *ngFor="let row of game.cells.iterate2d()">
-    <td *ngFor="let here of row">
+    <td *ngFor="let here of row" class="cell m-1">
       <div
         (click)="clickCell(here.x, here.y, here.content)"
         (contextmenu)="rightClickCell(here.x, here.y, here.content)"
-        [classList]="here.content.classList"
-        style="padding: 0"
+        class="btn cell p-0"
+        [class.btn-primary]="!here.content.isUncovered"
+        [class.btn-secondary]="here.content.isUncovered"
+        [class.disabled]="here.content.isUncovered"
       >
-          <span class="cell">
+          <span class="cell-content">
             {{ here.content.value }}
           </span>
       </div>

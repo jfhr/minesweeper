@@ -7,11 +7,9 @@ export class Cell {
   public isFlagged = false;
   public neighborBombs = 0;
   public value: string;
-  public classList = 'btn btn-primary';
 
   public uncover() {
     this.isUncovered = true;
-    this.classList = 'btn btn-secondary disabled';
     if (this.isBomb) {
       this.value = '💣';
     } else if (this.neighborBombs > 0) {
