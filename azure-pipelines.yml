@@ -15,15 +15,19 @@ steps:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
 
-  - task: Npm@1
+  - task: CmdLine@1
     inputs:
-      command: 'install'
+      script: |
+        npm install
+        npm install -g @angular/cli
     displayName: 'Install dependencies'
   - task: CmdLine@2
     inputs:
       script: |
-        npm install -g @angular/cli
-        ng test --watch=false --browsers=ChromeHeadless
+        ng test --watch=false --browser=ChromeHeadless
+  - task: CmdLine@3
+    inputs:
+      script: |
         ng build --prod
     displayName: 'Build for production'
   - task: CopyFilesOverSSH@0

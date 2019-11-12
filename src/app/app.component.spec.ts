@@ -1,15 +1,13 @@
 import {async, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {MinesweeperComponent} from './minesweeper-component/minesweeper.component';
-import {TimesPipe} from './minesweeper-service/times-pipe';
+import {AppModule} from './app.module';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-        MinesweeperComponent,
-        TimesPipe
+      imports: [
+        AppModule
       ],
     }).compileComponents();
   }));
@@ -26,10 +24,15 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('minesweeper');
   });
 
-  it('should render title', () => {
+  it(`should create the game ui`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('minesweeper app is running!');
+    let gameUiExists = false;
+    for (const childElement of fixture.nativeElement.children) {
+      if (childElement.tagName === 'APP-GAME-UI') {
+        gameUiExists = true;
+      }
+    }
+    expect(gameUiExists).toBeTruthy();
   });
+
 });

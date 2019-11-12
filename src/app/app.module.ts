@@ -4,7 +4,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {MinesweeperComponent} from './minesweeper-component/minesweeper.component';
-import {TimesPipe} from './minesweeper-service/times-pipe';
 import {GameUiComponent} from './game-ui-component/game-ui.component';
 import {FormsModule} from '@angular/forms';
 import {GameOptionsComponent} from './game-options-component/game-options.component';
@@ -15,7 +14,6 @@ import {GameOptionsComponent} from './game-options-component/game-options.compon
     GameUiComponent,
     GameOptionsComponent,
     MinesweeperComponent,
-    TimesPipe
   ],
   entryComponents: [
     GameOptionsComponent,
