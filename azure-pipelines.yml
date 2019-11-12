@@ -20,11 +20,15 @@ steps:
     script: |
       npm install
       npm install -g @angular/cli
+  displayName: 'Install dependencies'
 
 - task: CmdLine@2
   inputs:
-    script: 'ng test --watch=false --browser=ChromeHeadless'
+    script: |
+      ng test --watch=false
+      ng e2e
     failOnStderr: true
+  displayName: 'Run tests'
 
 - task: CmdLine@2
   inputs:
