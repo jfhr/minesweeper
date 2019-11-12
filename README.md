@@ -6,7 +6,7 @@ of neighboring mines.
 
 ![Minesweeper Screenshot](https://i.imgur.com/YAxVU9b.png)
 
-You can play the game for free [on my website](jfhr.de/minesweeper)! 
+You can play the game for free [on my website](https://jfhr.de/minesweeper)! 
 
 ----
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
