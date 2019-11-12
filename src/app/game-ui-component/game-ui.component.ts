@@ -18,7 +18,10 @@ export class GameUiComponent {
   }
 
   public openOptionsModal() {
-    const modalRef = this.modalService.open(GameOptionsComponent);
+    const modalRef = this.modalService.open(GameOptionsComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    });
     if (this.game !== undefined) {
       modalRef.componentInstance.gameState = this.game.state;
     }
