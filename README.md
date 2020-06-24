@@ -1,5 +1,7 @@
 # Minesweeper
 
+![CI](https://github.com/jfhr/minesweeper/workflows/CI/badge.svg)
+
 Minesweeper is a single-player puzzle game. The objective of the game is to find all the mines 
 hidden in a large field, without detonating any of them. Each cell of the field shows you the number
 of neighboring mines. 
