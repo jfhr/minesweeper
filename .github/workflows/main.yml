@@ -39,6 +39,8 @@ jobs:
         run: |
           npm install
           npm install -g @angular/cli
+          node ./node_modules/protractor/bin/webdriver-manager update --versions.chrome=$(google-chrome --version | cut -d ' ' -f 3)
+          node ./node_modules/protractor/bin/webdriver-manager start --versions.chrome=$(google-chrome --version | cut -d ' ' -f 3)
           
       - name: Build application
         run: ng build --prod
@@ -48,7 +50,5 @@ jobs:
           
       - name: Run e2e tests
         run: |
-          # workaround to ensure ChromeDriver version matches Chrome version on CI VMs
-          node ./node_modules/protractor/bin/webdriver-manager update --versions.chrome=83.0.4103.39  
           ng e2e --webdriverUpdate false
 
