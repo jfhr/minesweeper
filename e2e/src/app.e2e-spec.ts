@@ -1,5 +1,5 @@
 import {AppPage} from './app.po';
-import {browser, by, element, logging, protractor} from 'protractor';
+import {browser, by, element, logging, protractor, ExpectedConditions as EC} from 'protractor';
 
 describe('Minesweeper App', () => {
   let page: AppPage;
@@ -8,39 +8,39 @@ describe('Minesweeper App', () => {
     page = new AppPage();
   });
 
-  it('should display title', () => {
-    page.navigateTo();
+  it('should display title', async () => {
+    await page.navigateTo();
     expect(page.getTitleText()).toEqual('Minesweeper');
   });
 
-  it('should show configuration options', () => {
-    page.navigateTo();
+  it('should show configuration options', async () => {
+    await page.navigateTo();
     const optionsComponent = element(by.css('app-game-options'));
     expect(optionsComponent.isPresent()).toBeTruthy();
   });
 
-  it('should submit and use options', () => {
-    page.navigateTo();
+  it('should submit and use options', async () => {
+    await page.navigateTo();
     const fieldHeightInput = element(by.css('input[name="field-height"]'));
-    fieldHeightInput.sendKeys('30');
+    await fieldHeightInput.sendKeys('30');
     const fieldWidthInput = element(by.css('input[name="field-width"]'));
-    fieldWidthInput.sendKeys('20');
+    await fieldWidthInput.sendKeys('20');
     const numberOfBombsInput = element(by.css('input[name="number-of-bombs"]'));
-    numberOfBombsInput.sendKeys('60');
+    await numberOfBombsInput.sendKeys('60');
     const submitInput = element(by.css('input[type="submit"]'));
-    submitInput.click();
+    await submitInput.click();
 
     // options field should disappear
-    expect(element(by.css('app-game-options')).isPresent()).toBeFalsy();
+    await browser.driver.wait(EC.invisibilityOf(element(by.css('app-game-options'))), 1000);
     // should have 30 by 20 bombs
     expect(element.all(by.css('span.cell-content')).count()).toEqual(30 * 20);
   });
 
-  it('should not close modal window on ESC', () => {
-    page.navigateTo();
-    element(by.css('body')).sendKeys(protractor.Key.ESCAPE);
+  it('should not close modal window on ESC', async () => {
+    await page.navigateTo();
+    await element(by.css('body')).sendKeys(protractor.Key.ESCAPE);
     // options field should still be there
-    expect(element(by.css('app-game-options')).isPresent()).toBeTruthy();
+    await browser.driver.wait(EC.visibilityOf(element(by.css('app-game-options'))), 1000);
   });
 
   afterEach(async () => {
